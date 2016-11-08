@@ -2,12 +2,17 @@ var express = require('express');
 var router = express.Router();
 var Todo = require('../models/todo.model.js');
 var bodyParser = require('body-parser');
+// var mongoose = require('mongoose');
 
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({extended: true}));
 
 
-router.get('/todos', function(req, res){});
+router.get('/todos', function(req, res){
+  var todo = req.get("Todo");
+  res.send(req.headers.description);
+ });
+
 router.get('/todos/:id', function(req, res){});
 router.post('/todos', function(req, res){
   console.log(req.body);
