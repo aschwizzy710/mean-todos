@@ -31,6 +31,18 @@ router.get('/todos/:id', function(req, res){
     });
   });
 });
+router.get('/todos/description/:desc', findTodoByDesc, function(req, res){
+  Todo.find({desc: req.params.description.desc}, function(err, foundDesc){
+    if(err){
+      res.status(500).json({
+        err: err
+      });
+    }
+    res.status(200).json({
+      todo: foundDesc
+    });
+  });
+});
 router.post('/todos', function(req, res){
   console.log(req.body);
   var todo = new Todo(req.body);
