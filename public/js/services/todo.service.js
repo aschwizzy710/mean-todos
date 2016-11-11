@@ -37,7 +37,15 @@
               console.log(err);
             });
     }
-    function updateOneTodo(index, todo){}
+    function updateOneTodo(index, todo){
+      $http.put('/todos', todo)
+            .then(function(response){
+              todos.put(todo);
+            })
+            .catch(function(err){
+              console.log(err);
+            });
+    }
     function deleteOneTodo(index){}
   }
 }());
