@@ -21,8 +21,8 @@
       TodoService.create(newTodo);
       $scope.newTodo = '';
     }
-    function deleteTodo(index){
-      TodoService.delete(index);
+    function deleteTodo(index, todo){
+      TodoService.delete(index, todo);
     }
     function editTodo(todo){
       todo.isBeingEdited = true;

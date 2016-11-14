@@ -28,7 +28,6 @@
       return todos;
     }
     function createOneTodo(todo){
-      debugger;
       $http.post('/todos', todo)
             .then(function(response){
               todos.push(todo);
@@ -46,6 +45,14 @@
             console.log(err);
           });
     }
-    function deleteOneTodo(index){}
+    function deleteOneTodo(index, deletedTodo){
+      $http.delete('/todos/' + deletedTodo._id)
+            .then(function(){
+              todos.splice(index, 1); // splice can insert, replace, or delete -- go to a specific position, put new stuff, go to a specific position, replace, or go to a specific position, remove, and put one back
+            })
+            .catch(function(){
+              console.log(err);
+            });
+    }
   }
 }());
